@@ -1,2 +1,2 @@
-# superstore-data-cleaning
-Data quality checks &amp; cleaning pipeline for Superstore retail dataset.
+- **Data Cleaning**: SQL-based integrity checks (nulls, duplicates, invalid ranges) and Python pipeline for schema normalization.
+- **Regional Analysis** (`src/region_analysis.py`): Exploratory analysis of profit, sales and category composition across geographic regions.
