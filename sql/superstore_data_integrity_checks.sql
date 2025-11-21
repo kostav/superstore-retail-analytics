@@ -2,7 +2,7 @@ use sakila;
 
 -- Step 0A: Superstore Data Integrity & Cleaning Checks
 
--- 1) Nulls in critical columns
+-- 1) Checking for Nulls in critical columns
 SELECT 
   SUM(CASE WHEN "Order Date" IS NULL THEN 1 ELSE 0 END) AS null_order_date,
   SUM(CASE WHEN "Region" IS NULL THEN 1 ELSE 0 END) AS null_region,
@@ -14,12 +14,13 @@ SELECT
   SUM(CASE WHEN "Customer Segment" IS NULL THEN 1 ELSE 0 END) AS null_segment
 FROM superstore;
 
--- 2) Invalid discount range
+-- 2) Checking for Invalid discount range
 SELECT COUNT(*) AS invalid_discount_rows
 FROM superstore
 WHERE "Discount" < 0 OR "Discount" > 1;
 
--- 3) Check if there are potential duplicates (Row with same Order & Customer & Product ID)
+-- 3) Checking if there are potential duplicates (Row with same Order & Customer & Product ID), 
+--    in order for an order to be considered duplicate all the criteria below must apply 
 SELECT
   `Order ID`,
   `Customer ID`,
